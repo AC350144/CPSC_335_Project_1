@@ -3,6 +3,15 @@
 #include <sstream>
 using namespace std;
 
+/*
+
+CPSC 335 Project 1 
+
+Kristian Losenara
+Amanda Chen
+
+*/
+
 int findPreferredStartingCity(const vector<int>& city_distances, const vector<int>& fuel, int mpg) {
     int totalFuel = 0, totalDistance = 0;
     int currentFuel = 0, startCity = 0;
@@ -51,7 +60,7 @@ int main()
     }
 
 
-    cout << "Now, input the fuel in these cities separated by spaces (e.g., x y z): \n";    //Use the same logic above to get the input for fuel 
+    cout << ": \n";    //Use the same logic above to get the input for fuel 
     getline(cin, fuelLine);
     istringstream iss_fuel(fuelLine);     
     int numberFuel;                      
@@ -74,3 +83,4 @@ int main()
 
     return 0;
 }
+

@@ -6,14 +6,22 @@
 #include <unordered_set>
 using namespace std;
 
+/*
+
+CPSC 335 Project 1 
+
+Kristian Losenara
+Amanda Chen
+
+*/
+
+
 vector<pair<int, int>> parseInput(string& coordinates, int numOfCoords) 
 {
     vector<pair<int, int>> movements; //store the coordinate pairs
     stringstream coordinateStream(coordinates); //for input processing 
     char ignore;                     //we'll use this char later to ignore paranthesis and commas from our coordinate pairs 
     int x, y;
-
-
 
     coordinateStream >> ignore;                                                     //skip the first parenthesis (
 
