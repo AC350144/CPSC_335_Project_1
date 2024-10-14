@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 using namespace std;
 
 int findPreferredStartingCity(const vector<int>& city_distances, const vector<int>& fuel, int mpg) {
@@ -33,9 +34,37 @@ int findPreferredStartingCity(const vector<int>& city_distances, const vector<in
 
 int main() 
 {
-    vector<int> city_distances = {5, 25, 15, 10, 15};
-    vector<int> fuel = {1, 2, 1, 0, 3};
-    int mpg = 10;
+    vector<int> city_distances;
+    string cityLine;
+    vector<int> fuel;
+    string fuelLine;
+    int mpg; 
+
+    cout << "Input city distances separated by spaces (e.g., x y z): \n";
+    getline(cin, cityLine);
+    istringstream iss_city(cityLine);     // Use stringstream to split by spaces
+    int numberCity;                      //for storing in vector
+
+    while (iss_city >> numberCity) {
+        city_distances.push_back(numberCity);  // Read each number and store it in our vector city_distances
+    }
+
+
+    cout << "Now, input the fuel in these cities separated by spaces (e.g., x y z): \n";    //Use the same logic above to get the input for fuel 
+    getline(cin, fuelLine);
+    istringstream iss_fuel(fuelLine);     
+    int numberFuel;                      
+
+    while (iss_fuel >> numberFuel) {
+        fuel.push_back(numberFuel);  // Read each number and store it in our vector, fuel
+    }
+
+    cout << "Lastly, whats the mpg of the car?: \n";
+    cin >> mpg;
+
+    // vector<int> city_distances = {5, 25, 15, 10, 15};
+    // vector<int> fuel = {1, 2, 1, 0, 3};
+    // int mpg = 10;
 
     int preferredCity = findPreferredStartingCity(city_distances, fuel, mpg);
     cout << "The preferred starting city is: " << preferredCity << endl;
