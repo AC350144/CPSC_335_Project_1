@@ -15,7 +15,8 @@ int findPreferredStartingCity(const vector<int>& city_distances, const vector<in
 
     // If total fuel available is less than total distance, there's no solution (though in this case, a solution is guaranteed)
     if (totalFuel < totalDistance)
-        return -1;  // This case should not happen based on problem guarantee
+        cerr << "ERROR, fuel is somehow less than distance";
+        return -1;  //return ERROR, though this shouldnt happen
 
     for (int i = 0; i < city_distances.size(); ++i) 
     {
@@ -24,8 +25,8 @@ int findPreferredStartingCity(const vector<int>& city_distances, const vector<in
         // If currentFuel becomes negative, it means we can't start from 'startCity', and need to try starting from the next city
         if (currentFuel < 0) 
         {
-            startCity = i + 1;  // Move to the next city as the starting point
-            currentFuel = 0;    // Reset the fuel level
+            startCity = i + 1;  // Change our start to the next city and reset fuel level
+            currentFuel = 0;    
         }
     }
 
@@ -42,11 +43,11 @@ int main()
 
     cout << "Input city distances separated by spaces (e.g., x y z): \n";
     getline(cin, cityLine);
-    istringstream iss_city(cityLine);     // Use stringstream to split by spaces
-    int numberCity;                      //for storing in vector
+    istringstream iss_city(cityLine);     // use our stringstream library to split by spaces
+    int numberCity;                      //iterator for storing in vector
 
-    while (iss_city >> numberCity) {
-        city_distances.push_back(numberCity);  // Read each number and store it in our vector city_distances
+    while (iss_city >> numberCity) {     // Read each number and store it in our vector city_distances
+        city_distances.push_back(numberCity);  
     }
 
 
@@ -56,15 +57,17 @@ int main()
     int numberFuel;                      
 
     while (iss_fuel >> numberFuel) {
-        fuel.push_back(numberFuel);  // Read each number and store it in our vector, fuel
+        fuel.push_back(numberFuel);  // Read each number and store it in our vector fuel
     }
 
-    cout << "Lastly, whats the mpg of the car?: \n";
+    cout << "Lastly, whats the mpg of the car?: \n";  //easy
     cin >> mpg;
 
+    // EXAMPLE TEST CASE FROM HANDOUT
     // vector<int> city_distances = {5, 25, 15, 10, 15};
     // vector<int> fuel = {1, 2, 1, 0, 3};
     // int mpg = 10;
+    // "The preferred starting city is: 4"
 
     int preferredCity = findPreferredStartingCity(city_distances, fuel, mpg);
     cout << "The preferred starting city is: " << preferredCity << endl;
